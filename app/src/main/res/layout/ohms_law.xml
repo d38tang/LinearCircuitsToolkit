@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -10,6 +11,12 @@
         android:layout_weight="0.06"
         android:background="@color/Color2">
 
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/white_back"
+            android:id="@+id/imageButton"
+            android:background="@color/Color2" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -25,7 +32,8 @@
             <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.1">
+                android:layout_weight="0.1"
+                android:background="#FFFFFF">
 
             </RelativeLayout>
 
@@ -103,7 +111,7 @@
                                             android:hint="Voltage"
                                             android:textSize="15sp"
                                             android:gravity="center"
-                                            android:textCursorDrawable="@drawable/cursor_color"
+                                            android:textCursorDrawable="@null"
                                             android:layout_alignParentTop="true"
                                             android:layout_alignParentLeft="true"
                                             android:layout_alignParentStart="true"
@@ -167,7 +175,7 @@
                                             android:hint="Current"
                                             android:textSize="15sp"
                                             android:gravity="center"
-                                            android:textCursorDrawable="@drawable/cursor_color"
+                                            android:textCursorDrawable="@null"
                                             android:textColorHint="#80000000" />
                                     </RelativeLayout>
 
@@ -223,12 +231,12 @@
                                             android:layout_centerVertical="true"
                                             android:layout_alignParentLeft="true"
                                             android:layout_alignParentStart="true"
-
+                                            android:textCursorDrawable="@null"
                                             android:background="@color/Color2"
                                             android:hint="Resistance"
                                             android:textSize="15sp"
                                             android:gravity="center"
-                                            android:textCursorDrawable="@drawable/cursor_color"
+
                                             android:textColorHint="#80000000" />
                                     </RelativeLayout>
 
@@ -296,7 +304,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0.1"
 
-                android:layout_width="wrap_content">
+                android:layout_width="wrap_content"
+                android:background="@android:color/background_light">
 
             </RelativeLayout>
         </LinearLayout>

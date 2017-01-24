@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -10,6 +11,12 @@
         android:layout_weight="0.94"
         android:background="@color/Color2">
 
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/white_back"
+            android:id="@+id/imageButton5"
+            android:background="@color/Color2" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -126,7 +133,8 @@
                                     android:hint="R1"
                                     android:textSize="30sp"
                                     android:gravity="center"
-                                    android:textCursorDrawable="@drawable/cursor_color"/>
+                                    android:textColorLink="@android:color/black"
+                                    android:textCursorDrawable="@null"/>
                             </RelativeLayout>
 
                             <RelativeLayout
@@ -153,10 +161,11 @@
                                     android:hint="R2"
                                     android:textSize="30sp"
                                     android:gravity="center"
-                                    android:textCursorDrawable="@drawable/cursor_color"
                                     android:layout_alignParentTop="true"
                                     android:layout_alignParentLeft="true"
-                                    android:layout_alignParentStart="true" />
+                                    android:layout_alignParentStart="true"
+                                    android:textColorLink="@android:color/black"
+                                    android:textCursorDrawable="@null"/>
                             </RelativeLayout>
                         </LinearLayout>
                     </RelativeLayout>
@@ -190,14 +199,15 @@
                                     android:inputType="numberDecimal"
                                     android:ems="10"
                                     android:id="@+id/r3"
-                                    android:layout_centerVertical="true"
-                                    android:layout_alignParentLeft="true"
-                                    android:layout_alignParentStart="true"
                                     android:background="@color/Color2"
                                     android:hint="R3"
                                     android:textSize="30sp"
                                     android:gravity="center"
-                                    android:textCursorDrawable="@drawable/cursor_color"/>
+                                    android:layout_alignParentTop="true"
+                                    android:layout_alignParentLeft="true"
+                                    android:layout_alignParentStart="true"
+                                    android:textColorLink="@android:color/black"
+                                    android:textCursorDrawable="@null"/>
                             </RelativeLayout>
 
                             <RelativeLayout
@@ -226,7 +236,8 @@
                                     android:hint="R4"
                                     android:textSize="30sp"
                                     android:gravity="center"
-                                    android:textCursorDrawable="@drawable/cursor_color"/>
+                                    android:textColorLink="@android:color/black"
+                                    android:textCursorDrawable="@null"/>
                             </RelativeLayout>
                         </LinearLayout>
                     </RelativeLayout>
