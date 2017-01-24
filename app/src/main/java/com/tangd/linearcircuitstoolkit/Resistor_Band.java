@@ -1,5 +1,6 @@
 package com.tangd.linearcircuitstoolkit;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import java.lang.Math;
 import android.widget.TextView;
@@ -35,6 +37,15 @@ public class Resistor_Band extends AppCompatActivity {
         final Spinner spinner4=(Spinner)findViewById(R.id.spinner4);
 
         final TextView result =(TextView)findViewById(R.id.textView9);
+
+        ImageButton back = (ImageButton)findViewById(R.id.imageButton2);
+
+        back.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent intent = new Intent(Resistor_Band.this,MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
         ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this,R.array.band_1,android.R.layout.simple_spinner_item);
         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -33,6 +34,14 @@ public class series extends AppCompatActivity{
         final TextView eq = (TextView)findViewById(R.id.eq);
         Button reset = (Button)findViewById(R.id.reset);
         Button calculate = (Button)findViewById(R.id.calculate);
+        ImageButton back = (ImageButton)findViewById(R.id.imageButton5);
+
+        back.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent intent = new Intent(series.this,equivalent_resistor.class);
+                startActivity(intent);
+            }
+        });
 
         reset.setOnClickListener(new View.OnClickListener(){
             public void onClick (View v) {
