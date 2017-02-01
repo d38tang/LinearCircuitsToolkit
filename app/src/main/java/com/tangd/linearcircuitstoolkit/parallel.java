@@ -26,13 +26,17 @@ public class parallel extends AppCompatActivity{
 
         setContentView(R.layout.parallel_layout);
 
+        // User can input up to four resistance values
+
         final EditText r1 = (EditText)findViewById(R.id.r1);
         final EditText r2 = (EditText)findViewById(R.id.r2);
         final EditText r3 = (EditText)findViewById(R.id.r3);
         final EditText r4 = (EditText)findViewById(R.id.r4);
+
         final TextView eq = (TextView)findViewById(R.id.eq);
 
         Button reset = (Button)findViewById(R.id.reset);
+
         Button calculate = (Button)findViewById(R.id.calculate);
 
         ImageButton back = (ImageButton)findViewById(R.id.imageButton4);
@@ -55,6 +59,8 @@ public class parallel extends AppCompatActivity{
             }
         });
 
+        // Calculating equivalent resistance in parallel
+
         calculate.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
@@ -68,12 +74,15 @@ public class parallel extends AppCompatActivity{
                 float f_r3 = 0;
                 float f_r4 = 0;
                 float equiv = 0;
+
                 boolean one = false;
                 boolean two = false;
                 boolean three = false;
                 boolean four = false;
                 boolean empty = false;
 
+                // Convert the inputted strings to float
+                // If the EditText box is not empty, set boolean to true
 
                 if (!s_r1.isEmpty()){
                     f_r1 += Float.parseFloat(s_r1);
@@ -91,6 +100,10 @@ public class parallel extends AppCompatActivity{
                     f_r4 += Float.parseFloat(s_r4);
                     four = true;
                 }
+
+                // Equivalent resistance in parallel changes depending on which/how many inputs were entered
+                // Different cases for different inputs
+
                 if (one && !two && !three && !four){
                     equiv = f_r1;
                 }
@@ -136,6 +149,9 @@ public class parallel extends AppCompatActivity{
                 else if (one && two && three && four){
                     equiv = 1/((1/f_r3)+(1/f_r2)+(1/f_r4)+(1/f_r1));
                 }
+
+                // If there is no user input, generate error message
+
                 else {
                     empty = true;
                     AlertDialog.Builder error = new AlertDialog.Builder(parallel.this);
@@ -150,6 +166,8 @@ public class parallel extends AppCompatActivity{
                     error2.setTitle("Error");
                     error2.show();
                 }
+
+                // If there is input, output the equivalent resistance in a string
 
                 if (!empty) {
                     String output = "The equivalent resistance is " + String.valueOf(equiv) + "Ω";

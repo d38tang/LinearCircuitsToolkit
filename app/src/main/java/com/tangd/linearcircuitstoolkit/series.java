@@ -27,13 +27,21 @@ public class series extends AppCompatActivity{
 
         setContentView(R.layout.series_layout);
 
+        // User can input up to four resistance values
+
         final EditText r1 = (EditText)findViewById(R.id.r1);
         final EditText r2 = (EditText)findViewById(R.id.r2);
         final EditText r3 = (EditText)findViewById(R.id.r3);
         final EditText r4 = (EditText)findViewById(R.id.r4);
+
+        // Equivalent resistance
+
         final TextView eq = (TextView)findViewById(R.id.eq);
+
         Button reset = (Button)findViewById(R.id.reset);
+
         Button calculate = (Button)findViewById(R.id.calculate);
+
         ImageButton back = (ImageButton)findViewById(R.id.imageButton5);
 
         back.setOnClickListener(new View.OnClickListener(){
@@ -42,6 +50,8 @@ public class series extends AppCompatActivity{
                 startActivity(intent);
             }
         });
+
+        // Resets the four resistance values and the equivalent resistance value
 
         reset.setOnClickListener(new View.OnClickListener(){
             public void onClick (View v) {
@@ -53,6 +63,8 @@ public class series extends AppCompatActivity{
 
             }
         });
+
+        // Calculating equivalent resistance
 
         calculate.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -67,20 +79,29 @@ public class series extends AppCompatActivity{
                 float f_r3 = 0;
                 float f_r4 = 0;
                 float equiv = 0;
+
                 boolean empty=false;
+
+                // If there is user input, convert the inputted string to a float
 
                 if (!s_r1.isEmpty()){
                     f_r1 += Float.parseFloat(s_r1);
                 }
+
                 if (!s_r2.isEmpty()){
                     f_r2 += Float.parseFloat(s_r2);
                 }
+
                 if (!s_r3.isEmpty()){
                     f_r3 += Float.parseFloat(s_r3);
                 }
+
                 if (!s_r4.isEmpty()){
                     f_r4 += Float.parseFloat(s_r4);
                 }
+
+                // If there is no user input, generate error message
+
                 if (s_r1.isEmpty() && s_r2.isEmpty()&&s_r3.isEmpty()&&s_r4.isEmpty()) {
 
                     empty = true;
@@ -98,6 +119,9 @@ public class series extends AppCompatActivity{
                     error2.setTitle("Error");
                     error2.show();
                 }
+
+                // Add all the resistance values to get the equivalent resistance in series
+
                 equiv = f_r1 + f_r2 + f_r3 + f_r4;
 
                 if (!empty) {

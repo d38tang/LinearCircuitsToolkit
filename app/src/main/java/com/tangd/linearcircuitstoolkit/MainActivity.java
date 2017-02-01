@@ -15,6 +15,8 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.layout_main);
 
+        //Ohm's Law button
+
         Button ohm = (Button)findViewById(R.id.button);
 
         ohm.setOnClickListener(new View.OnClickListener() {
@@ -24,6 +26,9 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        // Resistor color band button
+
         Button rb = (Button)findViewById(R.id.button2);
 
         rb.setOnClickListener(new View.OnClickListener() {
@@ -32,6 +37,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        // Equivalent Resistance button
+
         Button Req= (Button)findViewById(R.id.button3);
 
         Req.setOnClickListener(new View.OnClickListener(){

@@ -28,12 +28,17 @@ public class ohms extends AppCompatActivity {
 
         setContentView(R.layout.ohms_law);
 
+        // EditText boxes to display voltage, current, or resistance
+
         final EditText voltage = (EditText)findViewById(R.id.editText);
         final EditText current = (EditText)findViewById(R.id.editText2);
         final EditText resistance = (EditText)findViewById(R.id.editText3);
 
         Button calculate = (Button)findViewById(R.id.button5);
         Button reset = (Button)findViewById(R.id.button6);
+
+        // Back button goes back to the main activity
+
         ImageButton back = (ImageButton)findViewById(R.id.imageButton);
 
         back.setOnClickListener(new View.OnClickListener(){
@@ -42,6 +47,8 @@ public class ohms extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        // Calculate voltage, current, or resistance
 
         calculate.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)
@@ -55,9 +62,13 @@ public class ohms extends AppCompatActivity {
                 boolean valid_c=true;
                 boolean valid_r=true;
 
+                // format for displayed values
+
                 NumberFormat scientific = new DecimalFormat("0.#####E0");
                 NumberFormat decimal = new DecimalFormat("#.#####");
 
+
+                // boolean is set to false for the EditText boxes that have no user input
 
                 if (s_voltage.isEmpty()){
                     valid_v=false;
@@ -69,11 +80,18 @@ public class ohms extends AppCompatActivity {
                     valid_r=false;
                 }
 
+                // User inputs into two of the three EditText boxes
+                // These two inputs are used to calculate the missing third input according to V = IR
+                // Error message if only zero, one or all three inputs are entered
+
+                // If voltage and current are entered, calculate resistance
                 if (valid_v && valid_c && !valid_r) {
                     double d_current = Double.parseDouble(s_current);
                     double d_voltage = Double.parseDouble(s_voltage);
                     double temp = d_voltage/d_current;
 
+                    // If the answer is between 1 and 10000, display the value according to the format
+                    // defined above. Else, use scientific notation
                     if (temp>1 && temp<10000){
                         resistance.setText(String.valueOf(decimal.format(temp)));
                     }
@@ -82,6 +100,9 @@ public class ohms extends AppCompatActivity {
                     }
 
                 }
+
+                // If resistance and voltage are entered, calculate current
+
                 else if (valid_r && valid_v && !valid_c) {
                     double d_resistance = Double.parseDouble(s_resistance);
                     double d_voltage = Double.parseDouble(s_voltage);
@@ -94,6 +115,9 @@ public class ohms extends AppCompatActivity {
                         current.setText(String.valueOf(scientific.format(temp)));
                     }
                 }
+
+                // If current and resistance are entered, calculate voltage
+
                 else if (valid_c && valid_r && !valid_v) {
                     double d_current = Double.parseDouble(s_current);
                     double d_resistance = Double.parseDouble(s_resistance);
@@ -106,6 +130,9 @@ public class ohms extends AppCompatActivity {
                         voltage.setText(String.valueOf(scientific.format(temp)));
                     }
                 }
+
+                // If not exactly two inputs are entered, generate error message
+
                 else {
 
                     AlertDialog.Builder error = new AlertDialog.Builder(ohms.this);
@@ -127,6 +154,8 @@ public class ohms extends AppCompatActivity {
 
             }
         });
+
+        // Resets the values of voltage, current, and resistance
 
         reset.setOnClickListener(new View.OnClickListener(){
             public void onClick (View v){

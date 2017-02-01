@@ -31,6 +31,8 @@ public class Resistor_Band extends AppCompatActivity {
 
         setContentView(R.layout.layout_colorband);
 
+        // four spinners for the four colors of a resistor
+
         final Spinner spinner1=(Spinner)findViewById(R.id.spinner);
         final Spinner spinner2=(Spinner)findViewById(R.id.spinner2);
         final Spinner spinner3=(Spinner)findViewById(R.id.spinner3);
@@ -46,6 +48,8 @@ public class Resistor_Band extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        // Create dropdown menu for the spinners to select colors already defined in XML file
 
         ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this,R.array.band_1,android.R.layout.simple_spinner_item);
         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -67,6 +71,8 @@ public class Resistor_Band extends AppCompatActivity {
 
         spinner4.setAdapter(adapter4);
 
+        // Convert selected item in dropdown menu to string
+
         spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -81,6 +87,7 @@ public class Resistor_Band extends AppCompatActivity {
 
             }
         });
+
         spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -94,6 +101,7 @@ public class Resistor_Band extends AppCompatActivity {
 
             }
         });
+
         spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -107,6 +115,7 @@ public class Resistor_Band extends AppCompatActivity {
 
             }
         });
+
         spinner4.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -121,6 +130,8 @@ public class Resistor_Band extends AppCompatActivity {
             }
         });
 
+        // Calculating the resistance from color bands
+
         Button calculate = (Button)findViewById(R.id.button7);
 
         calculate.setOnClickListener(new View.OnClickListener() {
@@ -129,6 +140,8 @@ public class Resistor_Band extends AppCompatActivity {
 
                 float resistance = 0;
                 float tolerance = 0;
+
+                // Start with the second color band. Add resistance based on the selected color.
 
                 if (two.equals("Black")){
                     resistance+=0;
@@ -160,6 +173,10 @@ public class Resistor_Band extends AppCompatActivity {
                 else if (two.equals("White")){
                     resistance+=9;
                 }
+
+                // Add the resistance values for the first color band to the total resistance
+                // The first color band is a 10s value while the second color band is a 1s value
+
                 if (one.equals("Black")){
                     resistance+=10*0;
                 }
@@ -190,6 +207,10 @@ public class Resistor_Band extends AppCompatActivity {
                 else if (one.equals("White")){
                     resistance+=10*9;
                 }
+
+                // The third color band is a multiplier dependant on the color
+                // Multiply the total resistance from the first two color bands by a factor of 10
+
                 if (three.equals("Black")){
                     resistance*=Math.pow(10,0);
                 }
@@ -220,6 +241,9 @@ public class Resistor_Band extends AppCompatActivity {
                 else if (three.equals("Silver")){
                     resistance*=Math.pow(10,-2);
                 }
+
+                // Fourth color band is a tolerance (error) value
+
                 if (four.equals("Brown")){
                     tolerance+=1;
                 }
@@ -244,6 +268,9 @@ public class Resistor_Band extends AppCompatActivity {
                 else if (four.equals("Silver")){
                     tolerance+=10;
                 }
+
+                // Output the resistance and tolerance values in a string
+
                 String output = "The resistance is " + String.valueOf(resistance)+"Ω" + " ±" +
                         String.valueOf(tolerance)+"%";
                 result.setText(output);

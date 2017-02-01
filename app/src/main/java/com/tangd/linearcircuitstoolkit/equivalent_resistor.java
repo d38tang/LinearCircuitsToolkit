@@ -32,6 +32,8 @@ public class equivalent_resistor extends AppCompatActivity {
                 }
             });
 
+            // Button for resistors in series
+
             Button series = (Button)findViewById(R.id.series);
 
             series.setOnClickListener(new View.OnClickListener() {
@@ -41,6 +43,8 @@ public class equivalent_resistor extends AppCompatActivity {
 
                 }
             });
+
+            // Button for resistors in parallel
 
             Button parallel = (Button)findViewById(R.id.parallel);
 
