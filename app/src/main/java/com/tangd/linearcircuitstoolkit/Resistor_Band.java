@@ -18,10 +18,17 @@ import android.widget.ArrayAdapter;
 
 public class Resistor_Band extends AppCompatActivity {
 
+    // color of the four resistor bands
+
     String one="";
     String two="";
     String three="";
     String four="";
+
+    String output = ""; // Resistance and tolerance of resistor
+
+    float resistance = 0.0f;
+    float tolerance = 0.0f;
 
 
     @Override
@@ -38,7 +45,11 @@ public class Resistor_Band extends AppCompatActivity {
         final Spinner spinner3=(Spinner)findViewById(R.id.spinner3);
         final Spinner spinner4=(Spinner)findViewById(R.id.spinner4);
 
+        //output resistance and tolerance of resistor
+
         final TextView result =(TextView)findViewById(R.id.textView9);
+
+        // back button to go back to the main menu
 
         ImageButton back = (ImageButton)findViewById(R.id.imageButton2);
 
@@ -138,143 +149,152 @@ public class Resistor_Band extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                float resistance = 0;
-                float tolerance = 0;
-
-                // Start with the second color band. Add resistance based on the selected color.
-
-                if (two.equals("Black")){
-                    resistance+=0;
-                }
-                else if (two.equals("Brown")){
-                    resistance+=1;
-                }
-                else if (two.equals("Red")){
-                    resistance+=2;
-                }
-                else if (two.equals("Orange")){
-                    resistance+=3;
-                }
-                else if (two.equals("Yellow")){
-                    resistance+=4;
-                }
-                else if (two.equals("Green")){
-                    resistance+=5;
-                }
-                else if (two.equals("Blue")){
-                    resistance+=6;
-                }
-                else if (two.equals("Violet")){
-                    resistance+=7;
-                }
-                else if (two.equals("Grey")){
-                    resistance+=8;
-                }
-                else if (two.equals("White")){
-                    resistance+=9;
-                }
-
-                // Add the resistance values for the first color band to the total resistance
-                // The first color band is a 10s value while the second color band is a 1s value
-
-                if (one.equals("Black")){
-                    resistance+=10*0;
-                }
-                else if (one.equals("Brown")){
-                    resistance+=10*1;
-                }
-                else if (one.equals("Red")){
-                    resistance+=10*2;
-                }
-                else if (one.equals("Orange")){
-                    resistance+=10*3;
-                }
-                else if (one.equals("Yellow")){
-                    resistance+=10*4;
-                }
-                else if (one.equals("Green")){
-                    resistance+=10*5;
-                }
-                else if (one.equals("Blue")){
-                    resistance+=10*6;
-                }
-                else if (one.equals("Violet")){
-                    resistance+=10*7;
-                }
-                else if (one.equals("Grey")){
-                    resistance+=10*8;
-                }
-                else if (one.equals("White")){
-                    resistance+=10*9;
-                }
-
-                // The third color band is a multiplier dependant on the color
-                // Multiply the total resistance from the first two color bands by a factor of 10
-
-                if (three.equals("Black")){
-                    resistance*=Math.pow(10,0);
-                }
-                else if (three.equals("Brown")){
-                    resistance*=Math.pow(10,1);
-                }
-                else if (three.equals("Red")){
-                    resistance*=Math.pow(10,2);
-                }
-                else if (three.equals("Orange")){
-                    resistance*=Math.pow(10,3);
-                }
-                else if (three.equals("Yellow")){
-                    resistance*=Math.pow(10,4);
-                }
-                else if (three.equals("Green")){
-                    resistance*=Math.pow(10,5);
-                }
-                else if (three.equals("Blue")){
-                    resistance*=Math.pow(10,6);
-                }
-                else if (three.equals("Violet")){
-                    resistance*=Math.pow(10,7);
-                }
-                else if (three.equals("Gold")){
-                    resistance*=Math.pow(10,-1);
-                }
-                else if (three.equals("Silver")){
-                    resistance*=Math.pow(10,-2);
-                }
-
-                // Fourth color band is a tolerance (error) value
-
-                if (four.equals("Brown")){
-                    tolerance+=1;
-                }
-                else if (four.equals("Red")){
-                    tolerance+=2;
-                }
-                else if (four.equals("Green")){
-                    tolerance+=0.5;
-                }
-                else if (four.equals("Blue")){
-                    tolerance+=0.25;
-                }
-                else if (four.equals("Violet")){
-                    tolerance+=0.10;
-                }
-                else if (four.equals("Grey")){
-                    tolerance+=0.05;
-                }
-                else if (four.equals("Gold")){
-                    tolerance+=5;
-                }
-                else if (four.equals("Silver")){
-                    tolerance+=10;
-                }
-
-                // Output the resistance and tolerance values in a string
-
-                String output = "The resistance is " + String.valueOf(resistance)+"Ω" + " ±" +
-                        String.valueOf(tolerance)+"%";
-                result.setText(output);
+                calculation(result);
             }
         });
     }
+
+
+    private void calculation(TextView result){
+
+        // Reset resistance and tolerance at the start of every calculation
+
+        resistance = 0.0f;
+        tolerance = 0.0f;
+
+        // Start with the second color band. Add resistance based on the selected color.
+
+        if (two.equals("Black")){
+            resistance+=0;
+        }
+        else if (two.equals("Brown")){
+            resistance+=1;
+        }
+        else if (two.equals("Red")){
+            resistance+=2;
+        }
+        else if (two.equals("Orange")){
+            resistance+=3;
+        }
+        else if (two.equals("Yellow")){
+            resistance+=4;
+        }
+        else if (two.equals("Green")){
+            resistance+=5;
+        }
+        else if (two.equals("Blue")){
+            resistance+=6;
+        }
+        else if (two.equals("Violet")){
+            resistance+=7;
+        }
+        else if (two.equals("Grey")){
+            resistance+=8;
+        }
+        else if (two.equals("White")){
+            resistance+=9;
+        }
+
+        // Add the resistance values for the first color band to the total resistance
+        // The first color band is a 10s value while the second color band is a 1s value
+
+        if (one.equals("Black")){
+            resistance+=10*0;
+        }
+        else if (one.equals("Brown")){
+            resistance+=10*1;
+        }
+        else if (one.equals("Red")){
+            resistance+=10*2;
+        }
+        else if (one.equals("Orange")){
+            resistance+=10*3;
+        }
+        else if (one.equals("Yellow")){
+            resistance+=10*4;
+        }
+        else if (one.equals("Green")){
+            resistance+=10*5;
+        }
+        else if (one.equals("Blue")){
+            resistance+=10*6;
+        }
+        else if (one.equals("Violet")){
+            resistance+=10*7;
+        }
+        else if (one.equals("Grey")){
+            resistance+=10*8;
+        }
+        else if (one.equals("White")){
+            resistance+=10*9;
+        }
+
+        // The third color band is a multiplier dependant on the color
+        // Multiply the total resistance from the first two color bands by a factor of 10
+
+        if (three.equals("Black")){
+            resistance*=Math.pow(10,0);
+        }
+        else if (three.equals("Brown")){
+            resistance*=Math.pow(10,1);
+        }
+        else if (three.equals("Red")){
+            resistance*=Math.pow(10,2);
+        }
+        else if (three.equals("Orange")){
+            resistance*=Math.pow(10,3);
+        }
+        else if (three.equals("Yellow")){
+            resistance*=Math.pow(10,4);
+        }
+        else if (three.equals("Green")){
+            resistance*=Math.pow(10,5);
+        }
+        else if (three.equals("Blue")){
+            resistance*=Math.pow(10,6);
+        }
+        else if (three.equals("Violet")){
+            resistance*=Math.pow(10,7);
+        }
+        else if (three.equals("Gold")){
+            resistance*=Math.pow(10,-1);
+        }
+        else if (three.equals("Silver")){
+            resistance*=Math.pow(10,-2);
+        }
+
+        // Fourth color band is a tolerance (error) value
+
+        if (four.equals("Brown")){
+            tolerance+=1;
+        }
+        else if (four.equals("Red")){
+            tolerance+=2;
+        }
+        else if (four.equals("Green")){
+            tolerance+=0.5;
+        }
+        else if (four.equals("Blue")){
+            tolerance+=0.25;
+        }
+        else if (four.equals("Violet")){
+            tolerance+=0.10;
+        }
+        else if (four.equals("Grey")){
+            tolerance+=0.05;
+        }
+        else if (four.equals("Gold")){
+            tolerance+=5;
+        }
+        else if (four.equals("Silver")){
+            tolerance+=10;
+        }
+
+        // Output the resistance and tolerance values in a string
+
+        output = "The resistance is " + String.valueOf(resistance)+"Ω" + " ±" +
+                String.valueOf(tolerance)+"%";
+        result.setText(output);
+    }
+
 }
