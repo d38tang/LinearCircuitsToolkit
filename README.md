@@ -1,8 +1,8 @@
-##What is it?
+#What is it?
 This app is a calculator for circuits and electronics. Functions include calculating Ohm's law, resistance from resistor color bands,
 and equivalent resistance from resistors in series or parallel.
 
-###Screenshots
+#Screenshots
 
 <img src="https://cloud.githubusercontent.com/assets/23199529/22173756/440bbdf4-df9a-11e6-90ed-e8f552c65155.jpg" width="300">
 <img src="https://cloud.githubusercontent.com/assets/23199529/22173833/408fb3e0-df9c-11e6-899b-31f7ebfefda0.jpg" width ="300">
